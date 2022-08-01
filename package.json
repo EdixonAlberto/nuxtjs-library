@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "format": "prettier --write ./*.{vue,js}",
+    "format": "prettier --write ./**/*.{vue,js}",
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
@@ -15,6 +15,9 @@
     "nuxt": "^2.15.7"
   },
   "devDependencies": {
+    "@fortawesome/free-regular-svg-icons": "^6.1.2",
+    "@fortawesome/free-solid-svg-icons": "^6.1.2",
+    "@nuxtjs/fontawesome": "^1.1.2",
     "@nuxtjs/tailwindcss": "^4.2.0",
     "postcss": "^8.3.5",
     "prettier": "^2.7.1"

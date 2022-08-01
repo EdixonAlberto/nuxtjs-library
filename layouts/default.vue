@@ -1,25 +1,27 @@
 <template>
-  <div>
-    <header class="h-20 mx-4 static top-0">
-      <div class="h-full flex justify-center content-between">
-        <div class="w-14 h-14 ml-auto border rounded">
-          <img src="" alt="logo avatar" />
+  <div class="layout-default">
+    <header class="h-20 static top-0">
+      <div class="h-full mx-4 flex justify-center content-center">
+        <div class="w-12 h-12 ml-auto border rounded">
+          <fa-icon class="w-full h-full text-white" icon="circle-user" />
         </div>
       </div>
     </header>
+
     <Nuxt />
-    <footer class="w-screen absolute bottom-0">
-      <a href="#">Created by Edixon</a>
+
+    <footer class="w-screen px-4 absolute bottom-0 flex justify-end">
+      <a class="" href="#">Created by Edixon</a>
     </footer>
   </div>
 </template>
 
-<style scoped>
+<style>
 * {
   outline: 1px solid green !important;
 }
 
-header {
-  background: #fbfbfb;
+.layout-default header {
+  background: #212d36;
 }
 </style>
