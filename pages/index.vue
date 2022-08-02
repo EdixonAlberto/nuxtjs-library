@@ -34,18 +34,10 @@
           <input class="outline-none" type="text" placeholder="Search by author" v-model="valueQuery" />
         </div>
 
-        <button class="h-10 px-4 ml-4 rounded-lg" @click="search">Buscar</button>
+        <button class="h-10 px-4 ml-4 rounded-lg cursor-pointer hover:scale-95" @click="search">Buscar</button>
       </div>
 
-      <div class="content">
-        <ul class="flex flex-wrap items-center">
-          <li class="w-40" v-for="(book, i) of books" :key="i">
-            <h4 v-text="book.title"></h4>
-            <img v-if="book.cover" :src="book.cover" alt="cover" />
-            <fa-icon v-else :icon="['fas', 'book']" />
-          </li>
-        </ul>
-      </div>
+      <div class="content"></div>
 
       <div class="recommended"></div>
     </main>
@@ -78,13 +70,19 @@ export default {
         type: this.typeQuery,
         value: this.valueQuery
       })
+
+      this.$router.push({ name: 'Books' })
     }
   }
 }
 </script>
 
 <style scoped>
-aside {
+.home main .content {
+  height: calc(100vh - 80px - 96px - 32px);
+}
+
+.home aside {
   padding: 20px;
 
   background-image: url('/images/libraries.jpg');
@@ -96,7 +94,7 @@ aside {
   z-index: 1;
 }
 
-aside::after {
+.home aside::after {
   content: '';
   height: 100%;
   width: 100%;
