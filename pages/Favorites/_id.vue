@@ -1,5 +1,5 @@
 <template>
-  <div class="book-index mx-52 flex items-center justify-center">
+  <div class="favorite-index mx-52 flex items-center justify-center">
     <book :data="favorite(this.id)" />
   </div>
 </template>
@@ -14,14 +14,14 @@ export default {
 
   computed: {
     ...mapGetters({
-      favorite: 'favorites/getFavoritesById'
+      favorite: 'favorites/getFavoriteById'
     })
   }
 }
 </script>
 
 <style scoped>
-.book-index {
+.favorite-index {
   height: calc(100vh - 80px - 32px);
 }
 </style>

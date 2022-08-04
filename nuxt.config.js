@@ -53,8 +53,9 @@ export default {
 
   fontawesome: {
     icons: {
-      solid: ['faHome', 'faCircleUser', 'faMagnifyingGlass', 'faHeart', 'faBook', 'faSpinner'],
-      regular: ['faHeart']
+      solid: ['faHome', 'faCircleUser', 'faMagnifyingGlass', 'faHeart', 'faBook', 'faSpinner', 'faCircleLeft'],
+      regular: ['faHeart'],
+      brands: ['faGithub']
     }
   }
 }

@@ -3,13 +3,23 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 
 export default {
   computed: {
     ...mapGetters({
       books: 'books/getBooks'
     })
+  },
+
+  methods: {
+    ...mapMutations({
+      setSection: 'states/SET_SECTION'
+    })
+  },
+
+  created() {
+    this.setSection('Books')
   }
 }
 </script>
