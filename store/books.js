@@ -1,6 +1,7 @@
 import { Book } from '@/models/Book'
 
 export const state = () => ({
+  booksLanding: [],
   books: []
 })
 
@@ -12,6 +13,9 @@ export const getters = {
     return id => {
       return state.books.find(book => book.id === id)
     }
+  },
+  getBooksLanding(state) {
+    return state.booksLanding
   }
 }
 
@@ -19,6 +23,9 @@ export const mutations = {
   SET_BOOKS(state, bookApiList) {
     const books = bookApiList.map(bookApi => new Book(bookApi))
     state.books = books
+  },
+  SET_BOOKS_LANDING(state) {
+    state.booksLanding = state.books.filter((_, i) => i < 5)
   }
 }
 

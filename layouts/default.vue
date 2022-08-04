@@ -33,6 +33,7 @@ export default {
 
 <style>
 * {
+  /* uncomment to layout */
   /* outline: 1px solid green !important; */
 }
 </style>

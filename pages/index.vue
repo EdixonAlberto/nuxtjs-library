@@ -6,7 +6,7 @@
       <ul class="sections">
         <h4 class="text-main-100">Read</h4>
         <li>In Progress</li>
-        <li><nuxt-link to="Favorites">Favorites</nuxt-link></li>
+        <li><nuxt-link class="block" to="Favorites">Favorites</nuxt-link></li>
       </ul>
 
       <ul class="sections">
@@ -99,11 +99,8 @@ export default {
 
   computed: {
     ...mapGetters({
-      getBooks: 'books/getBooks'
-    }),
-    books() {
-      return this.getBooks.filter((_, i) => i < 5)
-    }
+      books: 'books/getBooksLanding'
+    })
   },
 
   methods: {
@@ -111,7 +108,8 @@ export default {
       fetchBooks: 'books/fetchBooks'
     }),
     ...mapMutations({
-      setSection: 'states/SET_SECTION'
+      setSection: 'states/SET_SECTION',
+      setBooksLanding: 'books/SET_BOOKS_LANDING'
     }),
     async search() {
       this.isLoading = true
@@ -123,22 +121,26 @@ export default {
 
       this.$router.push({ name: 'Books' })
     },
-    async loadBooks() {
-      this.isLoadingMain = true
+    async loadBooks(force = false) {
+      if (!this.books.length || force) {
+        this.isLoadingMain = true
 
-      await this.fetchBooks({
-        type: 'subject',
-        value: this.category
-      })
+        await this.fetchBooks({
+          type: 'subject',
+          value: this.category
+        })
+
+        this.setBooksLanding()
+        this.isLoadingMain = false
+      }
 
       this.bookSelected = this.books[0]
-      this.isLoadingMain = false
     }
   },
 
   watch: {
     category() {
-      this.loadBooks()
+      this.loadBooks(true)
     }
   },
 
