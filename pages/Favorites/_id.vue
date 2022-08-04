@@ -1,6 +1,6 @@
 <template>
   <div class="book-index mx-52 flex items-center justify-center">
-    <book :data="book(this.id)" />
+    <book :data="favorite(this.id)" />
   </div>
 </template>
 
@@ -14,7 +14,7 @@ export default {
 
   computed: {
     ...mapGetters({
-      book: 'books/getBookById'
+      favorite: 'favorites/getFavoritesById'
     })
   }
 }

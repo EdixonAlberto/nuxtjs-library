@@ -8,7 +8,6 @@ export const getters = {
   getBooks(state) {
     return state.books
   },
-
   getBookById(state) {
     return id => {
       return state.books.find(book => book.id === id)
