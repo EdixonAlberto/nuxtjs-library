@@ -1,5 +1,5 @@
 <template>
-  <div class="book-index mx-52 flex items-center justify-center">
+  <div class="book-index mx-80 flex items-center justify-center">
     <book v-if="book" :data="book" />
   </div>
 </template>

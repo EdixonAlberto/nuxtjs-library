@@ -17,7 +17,7 @@
             alt="cover"
             draggable="false"
           />
-          <fa-icon v-else class="text-9xl text-main-200" icon="book" />
+          <fa-icon v-else class="h-full w-32 text-main-200" icon="book" />
         </div>
 
         <div class="content">

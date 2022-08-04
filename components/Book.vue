@@ -13,8 +13,8 @@
         <p v-if="book.languages.length"><span>Languages: </span>{{ formatList(book.languages) }}</p>
 
         <div class="favorite mt-10 flex items-center justify-start cursor-pointer" @click="toggleFavorites(book)">
-          <fa-icon class="text-2xl mr-2" :icon="[`${getFavoriteById(book.id) ? 'fas' : 'far'}`, 'heart']" />
-          <span>Add to my list favorite</span>
+          <fa-icon class="h-6 w-6 mr-2" :icon="[`${getFavoriteById(book.id) ? 'fas' : 'far'}`, 'heart']" />
+          <span>{{ getFavoriteById(book.id) ? 'Remove of' : 'Add to' }} my list favorite</span>
         </div>
       </div>
     </div>
@@ -65,7 +65,8 @@ export default {
 
 <style scoped>
 .book .card #cover-icon {
-  font-size: 300px;
+  height: 100%;
+  width: 300px;
 }
 
 .book .card .content p {

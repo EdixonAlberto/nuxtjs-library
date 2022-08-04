@@ -1,11 +1,11 @@
 <template>
-  <div class="favorite-index mx-52 flex items-center justify-center">
+  <div class="favorite-index mx-80 flex items-center justify-center">
     <book :data="favorite(this.id)" />
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 
 export default {
   async asyncData({ params }) {
@@ -16,6 +16,16 @@ export default {
     ...mapGetters({
       favorite: 'favorites/getFavoriteById'
     })
+  },
+
+  methods: {
+    ...mapMutations({
+      setSection: 'states/SET_SECTION'
+    })
+  },
+
+  created() {
+    this.setSection('Favorites')
   }
 }
 </script>

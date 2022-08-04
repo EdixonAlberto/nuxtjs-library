@@ -23,7 +23,7 @@
     <main class="ml-60 px-8">
       <div class="search my-4 w-full h-14 flex items-center justify-center">
         <div class="search-box w-96 h-10 py-1 px-3 flex items-center justify-between border border-gray-700 rounded-lg">
-          <fa-icon class="" icon="magnifying-glass" />
+          <fa-icon class="h-full w-5" icon="magnifying-glass" />
 
           <select
             class="cursor-pointer mx-3 bg-transparent outline-none"
@@ -47,12 +47,12 @@
         </div>
 
         <button
-          class="cursor-default h-10 px-4 ml-4 bg-main-200 rounded-lg hover:scale-95"
+          class="cursor-default h-10 w-max px-4 ml-4 bg-main-200 rounded-lg hover:scale-95"
           :class="{ 'cursor-pointer': valueQuery }"
           :disabled="!valueQuery"
           @click="search"
         >
-          <fa-icon v-if="isLoading" class="animate-spin text-white mr-2" icon="spinner" />
+          <fa-icon v-if="isLoading" class="h-auto w-5 mr-2 animate-spin text-white" icon="spinner" />
           <span class="text-white">Search</span>
         </button>
       </div>
@@ -75,7 +75,7 @@
       </div>
 
       <div v-else class="loading m-auto flex items-center justify-center">
-        <fa-icon class="text-4xl animate-spin" icon="spinner" />
+        <fa-icon class="h-9 w-9 animate-spin" icon="spinner" />
       </div>
     </main>
   </div>
