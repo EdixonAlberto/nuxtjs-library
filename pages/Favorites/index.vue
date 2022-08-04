@@ -1,5 +1,5 @@
 <template>
-  <books data-type="Favorites" :data-list="favorites" />
+  <books class="p-10 px-32" data-type="Favorites" :data-list="favorites" />
 </template>
 
 <script>

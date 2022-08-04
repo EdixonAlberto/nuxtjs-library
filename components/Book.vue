@@ -1,5 +1,5 @@
 <template>
-  <div class="book h-full">
+  <div v-if="data" class="book h-full">
     <div class="card h-full flex items-center justify-center gap-16">
       <img v-if="data.cover" :src="data.cover.big" alt="cover book" draggable="false" />
       <fa-icon v-else id="cover-icon" class="text-main-200" icon="book" />
@@ -12,7 +12,7 @@
         <p><span>Subjects: </span>{{ formatList(data.subjects) }}</p>
         <p v-if="data.languages.length"><span>Languages: </span>{{ formatList(data.languages) }}</p>
 
-        <div class="favorite mt-20 flex items-center justify-start cursor-pointer" @click="toggleFavorites(data)">
+        <div class="favorite mt-10 flex items-center justify-start cursor-pointer" @click="fagoriteHandler(data)">
           <fa-icon class="text-2xl mr-2" :icon="[`${getFavoriteById(data.id) ? 'fas' : 'far'}`, 'heart']" />
           <span>Add to my list favorite</span>
         </div>
@@ -28,12 +28,14 @@ export default {
   props: {
     data: {
       type: Object,
-      required: true
+      required: false,
+      default: null
     }
   },
 
   computed: {
     ...mapGetters({
+      section: 'states/getSection',
       getFavoriteById: 'favorites/getFavoriteById'
     })
   },
@@ -43,7 +45,14 @@ export default {
       toggleFavorites: 'favorites/toggle'
     }),
     formatList(list) {
-      return list.join(', ')
+      return list.filter((_, i) => i < 20).join(', ')
+    },
+    fagoriteHandler(data) {
+      this.toggleFavorites(data)
+
+      if (!this.getFavoriteById(data.id) && this.section !== 'Home') {
+        this.$router.go(-1)
+      }
     }
   }
 }

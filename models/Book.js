@@ -18,7 +18,7 @@ export class Book {
       medium: titleAPI[0].length > 20 ? titleAPI[0].substring(0, 20) + '...' : titleAPI[0],
       big: titleAPI.join('. ')
     }
-    this.subjects = bookApi.subject || []
+    this.subjects = bookApi.subject || ['no subject']
     this.cover = bookApi.cover_i
       ? {
           small: `https://covers.openlibrary.org/b/id/${bookApi.cover_i}-S.jpg`,
@@ -26,8 +26,8 @@ export class Book {
           big: `https://covers.openlibrary.org/b/id/${bookApi.cover_i}-L.jpg`
         }
       : undefined
-    this.authors = bookApi.author_name || []
-    this.lastPublishDate = bookApi.publish_date ? bookApi.publish_date[0] : ''
+    this.authors = bookApi.author_name || ['authorless']
+    this.lastPublishDate = bookApi.publish_date ? bookApi.publish_date[0] : 'dateless'
     this.languages = bookApi.language || []
   }
 }

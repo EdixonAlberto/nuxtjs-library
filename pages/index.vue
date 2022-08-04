@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <aside class="w-60 h-full absolute top-0 left-0 pt-16 transition delay-500">
+    <aside class="w-60 h-full fixed top-0 left-0 pt-16 transition delay-500">
       <h3 class="text-3xl text-gray-100">Library</h3>
 
       <ul class="sections">
@@ -11,17 +11,17 @@
 
       <ul class="sections">
         <h4 class="text-main-100">Categories</h4>
-        <li :class="{ 'font-extrabold': category === 'design' }">Design</li>
-        <li :class="{ 'font-extrabold': category === 'fashion' }">Fashion</li>
-        <li :class="{ 'font-extrabold': category === 'nutrition' }">Nutrition</li>
-        <li :class="{ 'font-extrabold': category === 'health' }">Health</li>
-        <li :class="{ 'font-extrabold': category === 'sports' }">Sports</li>
-        <li :class="{ 'font-extrabold': category === 'travel' }">Travel</li>
+        <li :class="{ 'font-extrabold': category === 'design' }" @click="category = 'design'">Design</li>
+        <li :class="{ 'font-extrabold': category === 'fashion' }" @click="category = 'fashion'">Fashion</li>
+        <li :class="{ 'font-extrabold': category === 'nutrition' }" @click="category = 'nutrition'">Nutrition</li>
+        <li :class="{ 'font-extrabold': category === 'health' }" @click="category = 'health'">Health</li>
+        <li :class="{ 'font-extrabold': category === 'sports' }" @click="category = 'sports'">Sports</li>
+        <li :class="{ 'font-extrabold': category === 'travel' }" @click="category = 'travel'">Travel</li>
       </ul>
     </aside>
 
-    <main class="ml-60">
-      <div class="search mt-10 w-full h-14 flex items-center justify-center">
+    <main class="ml-60 px-8">
+      <div class="search my-4 w-full h-14 flex items-center justify-center">
         <div class="search-box w-96 h-10 py-1 px-3 flex items-center justify-between border border-gray-700 rounded-lg">
           <fa-icon class="" icon="magnifying-glass" />
 
@@ -39,9 +39,10 @@
           <input
             class="outline-none"
             type="text"
-            placeholder="Search by author"
+            placeholder="Enter search"
             v-model="valueQuery"
             :disabled="isLoading"
+            autofocus
           />
         </div>
 
@@ -56,9 +57,26 @@
         </button>
       </div>
 
-      <div class="content"></div>
+      <div v-if="!isLoadingMain">
+        <hr />
 
-      <div class="recommended"></div>
+        <div class="content py-6">
+          <book :data="bookSelected" />
+        </div>
+
+        <hr />
+
+        <div class="recommended pt-6 pb-8">
+          <h3 class="mb-6 text-xl text-center font-bold">
+            Books about <span class="capitalize" v-text="category"></span>
+          </h3>
+          <books :data-list="books" @select-book="bookSelected = $event" />
+        </div>
+      </div>
+
+      <div v-else class="loading m-auto flex items-center justify-center">
+        <fa-icon class="text-4xl animate-spin" icon="spinner" />
+      </div>
     </main>
   </div>
 </template>
@@ -69,17 +87,23 @@ import { mapActions, mapGetters, mapMutations } from 'vuex'
 export default {
   data() {
     return {
+      bookList: [],
+      bookSelected: null,
       category: 'design',
-      isLoading: false,
       typeQuery: 'q',
-      valueQuery: ''
+      valueQuery: '',
+      isLoading: false,
+      isLoadingMain: false
     }
   },
 
   computed: {
     ...mapGetters({
-      books: 'books/GET_BOOKS'
-    })
+      getBooks: 'books/getBooks'
+    }),
+    books() {
+      return this.getBooks.filter((_, i) => i < 5)
+    }
   },
 
   methods: {
@@ -98,16 +122,39 @@ export default {
       })
 
       this.$router.push({ name: 'Books' })
+    },
+    async loadBooks() {
+      this.isLoadingMain = true
+
+      await this.fetchBooks({
+        type: 'subject',
+        value: this.category
+      })
+
+      this.bookSelected = this.books[0]
+      this.isLoadingMain = false
+    }
+  },
+
+  watch: {
+    category() {
+      this.loadBooks()
     }
   },
 
   created() {
     this.setSection('Home')
+    this.loadBooks()
   }
 }
 </script>
 
 <style scoped>
+.home main .loading {
+  height: calc(100vh - 80px - 56px - 32px);
+  width: 100%;
+}
+
 .home aside {
   padding: 20px;
 

@@ -1,5 +1,5 @@
 <template>
-  <books data-type="Books" :data-list="books" />
+  <books class="p-10 px-32" data-type="Books" :data-list="books" />
 </template>
 
 <script>
