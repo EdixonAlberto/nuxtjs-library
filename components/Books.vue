@@ -7,7 +7,7 @@
         :key="data.id"
         @click="goBook(data.id)"
       >
-        <h4 class="h-20 text-lg" v-text="data.title.medium"></h4>
+        <h4 class="h-20 text-lg font-bold" v-text="data.title.medium"></h4>
 
         <div class="cover flex flex-1 justify-center">
           <img

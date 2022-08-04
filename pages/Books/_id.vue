@@ -1,6 +1,6 @@
 <template>
   <div class="book-index mx-52 flex items-center justify-center">
-    <book :data="book(this.id)" />
+    <book v-if="book" :data="book" />
   </div>
 </template>
 
@@ -14,8 +14,15 @@ export default {
 
   computed: {
     ...mapGetters({
-      book: 'books/getBookById'
-    })
+      getBook: 'books/getBookById'
+    }),
+    book() {
+      return this.getBook(this.id)
+    }
+  },
+
+  created() {
+    if (!this.book) this.$router.push({ name: 'index' })
   }
 }
 </script>

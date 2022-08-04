@@ -108,10 +108,6 @@ export default {
 </script>
 
 <style scoped>
-.home main .content {
-  height: calc(100vh - 80px - 96px - 32px);
-}
-
 .home aside {
   padding: 20px;
 

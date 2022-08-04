@@ -1,7 +1,7 @@
 <template>
   <div class="book h-full">
     <div class="card h-full flex items-center justify-center gap-16">
-      <img v-if="data.cover" :src="data.cover.big" alt="cover book" />
+      <img v-if="data.cover" :src="data.cover.big" alt="cover book" draggable="false" />
       <fa-icon v-else id="cover-icon" class="text-main-200" icon="book" />
 
       <div class="content">

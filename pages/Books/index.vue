@@ -19,7 +19,8 @@ export default {
   },
 
   created() {
-    this.setSection('Books')
+    if (this.books.length) this.setSection('Books')
+    else this.$router.push({ name: 'index' })
   }
 }
 </script>
