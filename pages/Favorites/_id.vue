@@ -8,6 +8,10 @@
 import { mapGetters, mapMutations } from 'vuex'
 
 export default {
+  head: {
+    title: 'Library | Favorites'
+  },
+
   async asyncData({ params }) {
     return { id: params.id }
   },

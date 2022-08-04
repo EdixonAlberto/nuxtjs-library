@@ -32,7 +32,7 @@ export const mutations = {
 export const actions = {
   async fetchBooks({ commit }, { type, value }) {
     try {
-      const data = await this.$axios.$get(`http://openlibrary.org/search.json?${type}=${value}`)
+      const data = await this.$axios.$get(`https://openlibrary.org/search.json?${type}=${value}`)
 
       commit('SET_BOOKS', data.docs)
     } catch (error) {

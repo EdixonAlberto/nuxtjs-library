@@ -8,6 +8,10 @@
 import { mapGetters } from 'vuex'
 
 export default {
+  head: {
+    title: 'Library | Books'
+  },
+
   async asyncData({ params }) {
     return { id: params.id }
   },

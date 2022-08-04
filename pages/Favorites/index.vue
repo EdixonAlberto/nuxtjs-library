@@ -6,6 +6,10 @@
 import { mapGetters, mapMutations } from 'vuex'
 
 export default {
+  head: {
+    title: 'Library | Favorites'
+  },
+
   computed: {
     ...mapGetters({
       favorites: 'favorites/getFavorites'

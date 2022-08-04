@@ -16,9 +16,9 @@
     <Nuxt />
 
     <footer class="h-8 w-full p-4 absolute bottom-0 flex items-center justify-end bg-main-100">
-      <a class="flex items-center text-main-200 font-bold" href="https://github.com/EdixonAlberto">
+      <a class="flex items-center text-main-200 font-bold" href="https://github.com/EdixonAlberto/nuxtjs-library">
         <fa-icon class="mr-1 h-6 w-6 text-main-200" :icon="['fab', 'github']" />
-        Created by Edixon
+        Created by Edixon 🍍
       </a>
     </footer>
   </div>

@@ -1,12 +1,13 @@
 # Nuxtjs Library
 
-description...
+Website that works as a library allowing users to search for books by title, author and subject. You can also save books
+as favorites.
 
-> Instructions: [aqui](./instructions.md)
+> This project is part of a code challenge. Instructions of challenge [here](./instructions.md).
 
-## Demo
-<!-- TODO: -->
-link demo...
+## [See demo](https://nuxtjs-library.netlify.app/) &#x279c;
+
+![preview](preview.png)
 
 ## Build Setup
 

@@ -6,6 +6,10 @@
 import { mapGetters, mapMutations } from 'vuex'
 
 export default {
+  head: {
+    title: 'Library | Books'
+  },
+
   computed: {
     ...mapGetters({
       books: 'books/getBooks'

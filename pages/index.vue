@@ -47,7 +47,7 @@
         </div>
 
         <button
-          class="cursor-default h-10 w-max px-4 ml-4 bg-main-200 rounded-lg hover:scale-95"
+          class="cursor-default h-10 w-max flex items-center px-4 ml-4 bg-main-200 rounded-lg hover:scale-95"
           :class="{ 'cursor-pointer': valueQuery }"
           :disabled="!valueQuery"
           @click="search"
@@ -60,7 +60,7 @@
       <div v-if="!isLoadingMain">
         <hr />
 
-        <div class="content py-6">
+        <div class="content py-6 px-8">
           <book :data="bookSelected" />
         </div>
 
